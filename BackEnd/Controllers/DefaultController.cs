@@ -16,7 +16,7 @@ namespace BackEnd.Controllers
         [HttpGet]
         public string Get()
         {
-            return "Aplicacion corriendo";
+            return "Aplicacion corriendo...";
         }
 
         
