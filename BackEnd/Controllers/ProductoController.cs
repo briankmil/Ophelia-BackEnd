@@ -22,7 +22,6 @@ namespace BackEnd.Controllers
             _productoService = productoService;
         }
 
-        [Route("GetListadoProductos")]
         [HttpGet]
         public async Task<IActionResult> GetListadoProductos()
         {
