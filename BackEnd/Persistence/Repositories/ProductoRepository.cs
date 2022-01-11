@@ -17,9 +17,27 @@ namespace BackEnd.Persistence.Repositories
             _context = context;
         }
 
-        public Task<List<Producto>> GetListaProductos()
+        public async Task CreateEntrada(Entrada entrada)
         {
-           return _context.Productos.ToListAsync();
+            _context.Add(entrada);
+            await _context.SaveChangesAsync();
+        }
+
+        public async Task CreateProducto(Producto producto)
+        {
+            _context.Add(producto);
+            await _context.SaveChangesAsync();
+        }
+
+        public async Task EditProducto(Producto producto)
+        {
+            _context.Entry(producto).State = EntityState.Modified;
+            await _context.SaveChangesAsync();
+        }
+
+        public async Task<List<Producto>> GetListaProductos()
+        {
+           return await _context.Productos.ToListAsync();
         }
     }
 }

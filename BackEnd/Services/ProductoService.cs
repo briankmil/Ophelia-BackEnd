@@ -16,9 +16,24 @@ namespace BackEnd.Services
             this._productoRepository = productoRepository;
         }
 
+        public async Task CreateEntrada(Entrada entrada)
+        {
+            await _productoRepository.CreateEntrada(entrada);
+        }
+
+        public async Task CreateProducto(Producto producto)
+        {
+            await _productoRepository.CreateProducto(producto);
+        }
+
+        public async Task EditProducto(Producto producto)
+        {
+            await _productoRepository.EditProducto(producto);
+        }
+
         public async Task<List<Producto>> GetListaProductos()
         {
-           return await _productoRepository.GetListaProductos();
+            return await _productoRepository.GetListaProductos();
         }
     }
 }

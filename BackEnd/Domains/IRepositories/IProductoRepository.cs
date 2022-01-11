@@ -9,6 +9,9 @@ namespace BackEnd.Domains.IRepositories
     public interface IProductoRepository
     {
         Task<List<Producto>> GetListaProductos();
+        Task CreateEntrada(Entrada entrada);
+        Task CreateProducto(Producto producto);
+        Task EditProducto(Producto producto);
 
     }
 }

@@ -9,7 +9,7 @@ using Microsoft.EntityFrameworkCore;
 namespace BackEnd.Domains.Models
 {
     [Table("ENTRADA")]
-    public partial class Entradum
+    public partial class Entrada
     {
         [Key]
         [Column("ENT_id")]

@@ -15,13 +15,11 @@ namespace BackEnd.Controllers
     [ApiController]
     public class ProductoController : ControllerBase
     {
-        private readonly IProductoService _productoSercie;
-        private readonly IConfiguration _config;
+        private readonly IProductoService _productoService;
 
-        public ProductoController(IConfiguration config, IProductoService productoService)
+        public ProductoController(IProductoService productoService)
         {
-            _config = config;
-            _productoSercie = productoService;
+            _productoService = productoService;
         }
 
         [Route("GetListadoProductos")]
@@ -30,7 +28,7 @@ namespace BackEnd.Controllers
         {
             try
             {
-                var productos = await _productoSercie.GetListaProductos();
+                var productos = await _productoService.GetListaProductos();
                 return Ok(productos);
             }
             catch (Exception ex)
@@ -38,6 +36,52 @@ namespace BackEnd.Controllers
                 return BadRequest(ex.Message);
             }
         }
-               
+
+        [HttpPost]
+        public async Task<IActionResult> Post([FromBody] Producto producto)
+        {
+            try
+            {
+                await _productoService.CreateProducto(producto);
+                return Ok(new { message = "Se agrego el producto exitosamente" });
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex.Message);
+
+            }
+        }
+
+        [HttpPost]
+        [Route("PostEntrada")]
+        public async Task<IActionResult> PostEntrada([FromBody] Entrada entrada)
+        {
+            try
+            {
+                await _productoService.CreateEntrada(entrada);
+                return Ok(new { message = "Se agrego el producto exitosamente" });
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex.Message);
+
+            }
+        }
+
+        [HttpPut]
+        public async Task<IActionResult> Put([FromBody] Producto producto)
+        {
+            try
+            {
+                await _productoService.EditProducto(producto);
+                return Ok(new { message = "Se modifico el producto exitosamente" });
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex.Message);
+
+            }
+        }
+
     }
 }

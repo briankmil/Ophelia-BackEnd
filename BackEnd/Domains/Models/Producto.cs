@@ -14,7 +14,7 @@ namespace BackEnd.Domains.Models
         public Producto()
         {
             DetalleFacturas = new HashSet<DetalleFactura>();
-            Entrada = new HashSet<Entradum>();
+            Entrada = new HashSet<Entrada>();
             Salida = new HashSet<Salidum>();
         }
 
@@ -32,8 +32,8 @@ namespace BackEnd.Domains.Models
 
         [InverseProperty(nameof(DetalleFactura.DetfacIdProductoNavigation))]
         public virtual ICollection<DetalleFactura> DetalleFacturas { get; set; }
-        [InverseProperty(nameof(Entradum.EntIdProductoNavigation))]
-        public virtual ICollection<Entradum> Entrada { get; set; }
+        [InverseProperty(nameof(Models.Entrada.EntIdProductoNavigation))]
+        public virtual ICollection<Entrada> Entrada { get; set; }
         [InverseProperty(nameof(Salidum.SalIdProductoNavigation))]
         public virtual ICollection<Salidum> Salida { get; set; }
     }

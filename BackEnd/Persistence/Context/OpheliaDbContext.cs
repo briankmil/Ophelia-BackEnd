@@ -20,7 +20,7 @@ namespace BackEnd.Persistence.Context
 
         public virtual DbSet<Cliente> Clientes { get; set; }
         public virtual DbSet<DetalleFactura> DetalleFacturas { get; set; }
-        public virtual DbSet<Entradum> Entrada { get; set; }
+        public virtual DbSet<Entrada> Entrada { get; set; }
         public virtual DbSet<Factura> Facturas { get; set; }
         public virtual DbSet<Producto> Productos { get; set; }
         public virtual DbSet<Salidum> Salida { get; set; }
@@ -52,7 +52,7 @@ namespace BackEnd.Persistence.Context
                     .HasConstraintName("FK_DETALLE_FACTURA_PRODUCTO");
             });
 
-            modelBuilder.Entity<Entradum>(entity =>
+            modelBuilder.Entity<Entrada>(entity =>
             {
                 entity.HasOne(d => d.EntIdProductoNavigation)
                     .WithMany(p => p.Entrada)
