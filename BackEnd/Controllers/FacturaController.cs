@@ -22,7 +22,6 @@ namespace BackEnd.Controllers
             _facturaService = facturaService;
         }
 
-        [Route("GetListadoFacturas")]
         [HttpGet]
         public async Task<IActionResult> GetListadoFacturas()
         {

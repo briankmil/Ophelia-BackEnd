@@ -38,9 +38,13 @@ namespace BackEnd
 
             //Service
             services.AddScoped<IProductoService, ProductoService>();
+            services.AddScoped<IClienteService, ClienteService>();
+            services.AddScoped<IFacturaService, FacturaService>();
 
             //Repository
             services.AddScoped<IProductoRepository, ProductoRepository>();
+            services.AddScoped<IClienteRepository, ClienteRepository>();
+            services.AddScoped<IFacturaRepository, FacturaRepository>();
 
 
             //Cors 

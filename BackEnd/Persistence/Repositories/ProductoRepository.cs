@@ -19,6 +19,7 @@ namespace BackEnd.Persistence.Repositories
 
         public async Task CreateEntrada(Entrada entrada)
         {
+            entrada.EntFecha = DateTime.Now;
             _context.Add(entrada);
             await _context.SaveChangesAsync();
         }

@@ -17,19 +17,32 @@ namespace BackEnd.Persistence.Repositories
             _context = context;
         }
 
-        public Task CreateDetalleFacturas(List<DetalleFactura> detalleFacturas)
+        public async Task CreateDetalleFacturas(List<DetalleFactura> detalleFacturas)
         {
-            throw new NotImplementedException();
+            foreach (DetalleFactura item in detalleFacturas)
+            {
+                _context.Add(item);
+                _context.Add(new Salidum
+                {
+                    SalCantidad = item.DetfacCantidad.Value,
+                    SalFecha = DateTime.Now,
+                    SalIdProducto = item.DetfacIdProducto.Value
+                });
+            }
+            await _context.SaveChangesAsync();
+
         }
 
-        public Task<int> CreateFactura(Factura factura)
+        public async Task<int> CreateFactura(Factura factura)
         {
-            throw new NotImplementedException();
+             _context.Add(factura);
+            await _context.SaveChangesAsync();
+            return factura.FacId;
         }
 
-        public Task<List<Factura>> GetListaFacturas()
+        public async Task<List<Factura>> GetListaFacturas()
         {
-            throw new NotImplementedException();
+            return await _context.Facturas.ToListAsync();
         }
     }
 }

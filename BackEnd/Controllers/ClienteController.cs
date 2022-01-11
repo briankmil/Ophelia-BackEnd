@@ -22,7 +22,6 @@ namespace BackEnd.Controllers
             _clienteService = clienteService;
         }
 
-        [Route("GetListadoClientes")]
         [HttpGet]
         public async Task<IActionResult> GetListadoClientes()
         {
